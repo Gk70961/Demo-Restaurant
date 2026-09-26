@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getMenuItem } from "@/data/menu";
+import AddToCart from "@/components/AddToCart";
 
 export default async function MenuItemPage({ params }: PageProps<"/menu/[slug]">) {
   const { slug } = await params;
@@ -24,6 +25,7 @@ export default async function MenuItemPage({ params }: PageProps<"/menu/[slug]">
         </p>
         <p className="mt-6 text-lg text-gray-700">{item.description}</p>
         <p className="mt-6 text-3xl font-bold text-orange-600">${item.price.toFixed(2)}</p>
+        <AddToCart slug={item.slug} name={item.name} price={item.price} />
       </div>
     </div>
   );
